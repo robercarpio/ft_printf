@@ -10,26 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int ft_swparam(char const format, va_list args)
+int	ft_swparam(char const format, va_list args)
 {
-	
-	if (format == 'c')
-	{
-		char	c;
-		c = va_arg(args, int);
-		return (ft_putchr(c));
-	}
-	else if(format == 's')
-	{
-		char	*c;
-		c = va_arg(args, char *);
-		return(ft_putstr(c));
-	}
-	else if(format == 'd')
-	{
+	char	m;
 
+	if (format == 'c')
+		return (ft_preptchr(args));
+	else if (format == 's')
+		return (ft_preptstr(args));
+	else if (format == 'd' || format == 'i')
+		return (ft_preptnbr(args));
+	else if (format == 'u')
+		return (ft_preptnbru(args));
+	else if (format == 'x' || format == 'X')
+	{
+		if (format == 'x')
+			m = 0;
+		else
+			m = 1;
+		return (ft_prepthx(args, m));
 	}
+	else if (format == 'p')
+		return (ft_preptvdhx(args));
+	else if (format == '%')
+		return (ft_putchr('%'));
 	return (0);
 }

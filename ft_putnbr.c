@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_putnbr(int n)
 {
 	char	nb;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (n == -2147483648)
@@ -25,17 +27,15 @@ int	ft_putnbr(int n)
 	{
 		if (n < 0)
 		{
-			write(1, "-", 1);
+			i += ft_putchr('-');
 			n = -n;
-			i++;
 		}
 		if (n >= 10)
 		{
-			ft_putnbr(n / 10);
-			i++;
+			i += ft_putnbr(n / 10);
 		}
 		nb = n % 10 + 48;
-		write(1, &nb, 1);
+		i += ft_putchr(nb);
 	}
 	return (i);
 }

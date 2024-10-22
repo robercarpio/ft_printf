@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *str)
 {
 	int	i;
+
+	i = 0;
 	while (*str)
 	{
-		write (1,&(*str),1);
+		write (1, &(*str), 1);
 		str++;
 		i++;
 	}

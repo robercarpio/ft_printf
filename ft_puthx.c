@@ -10,39 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_puthx(int n, int m)
+int	ft_puthx(unsigned long long n, int m)
 {
-	int	i;
+	int		i;
 	char	*values;
 
-	if (m)
-	{
-		values = "0123456789ABCDEF";
-	}
-	else if (!m)
-	{
-		values = "0123456789abcdef";
-	}
-	
 	i = 0;
-
-	if (n / 16)
+	if (m == 1 || m == 0)
 	{
-		i+=ft_puthx(n/16,m);
+		if (m == 1)
+			values = "0123456789ABCDEF";
+		else
+			values = "0123456789abcdef";
+		if (n / 16)
+		{
+			i += ft_puthx(n / 16, m);
+		}
+		i += ft_putchr(values[n % 16]);
 	}
-	write (1,&values[n % 16],1);
-	i++;
 	return (i);
 }
 
 /*
 int	main(void)
 {
-	printf("%d",ft_puthx(163,1));
-	write(1,"\n",1);
-	ft_puthx(163,0);
+	printf("%d",ft_puthx(1132131131313123233,1));
 	return(0);
 }
 */

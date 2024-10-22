@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchr.c                                        :+:      :+:    :+:   */
+/*   ft_preptnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarpio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:10:02 by rcarpio-          #+#    #+#             */
-/*   Updated: 2024/10/21 11:10:04 by rcarpio-         ###   ########.fr       */
+/*   Created: 2024/10/22 14:55:36 by rcarpio-          #+#    #+#             */
+/*   Updated: 2024/10/22 14:55:39 by rcarpio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchr(char c)
+int	ft_preptnbr(va_list args)
 {
-	write(1, &c, 1);
-	return (1);
+	int	n;
+
+	n = va_arg(args, int);
+	return (ft_putnbr(n));
 }

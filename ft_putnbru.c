@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbru.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcarpio- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:10:02 by rcarpio-          #+#    #+#             */
-/*   Updated: 2024/10/21 11:10:04 by rcarpio-         ###   ########.fr       */
+/*   Created: 2024/10/22 19:33:16 by rcarpio-          #+#    #+#             */
+/*   Updated: 2024/10/22 19:33:18 by rcarpio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchr(char c)
+int	ft_putnbru(unsigned int n)
 {
-	write(1, &c, 1);
-	return (1);
+	char	nb;
+	int		i;
+
+	i = 0;
+	if (n >= 10)
+	{
+		i += ft_putnbr(n / 10);
+	}
+	nb = n % 10 + 48;
+	i += ft_putchr(nb);
+	return (i);
 }
